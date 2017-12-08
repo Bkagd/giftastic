@@ -60,3 +60,8 @@ $(document).on("click", ".animal", displayAnimalInfo);
 renderButtons();
 
 });
+//I am having trouble with a few parts of the homework
+
+//display gifs on page
+//empty out div that holds gifs before displaying more gifs
+//on click event which starts and stops gifs from playing
