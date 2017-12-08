@@ -1,8 +1,6 @@
 //on ready
 $(document).ready(function(){
 
-
-
 // initial array of animals
 var animals = ["Cat", "Pig", "Dog", "Horse", "Seal"]
 
@@ -18,26 +16,50 @@ function displayAnimalInfo() {
     }).done(function (response) {
         console.log(response);
 
-        // Creating a div to hold the gifs
-        var gifDiv = $("<div class='animal'>");
-        for (i = 0; i < response.data[i]; i++) {
-            var gif = $("<img>"+embed_url+"</img>");
-            gifDiv.append(gif);
+        var results = response.data; 
+
+        // loop through results
+        for (i = 0; i < results.length; i++) {
+
+            //rating
+            if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+
+            //div for placing our rating and gif
+            var gifDiv = $("<div class='animal'>");
+
+            //storing rating
+            var rating = results[i].rating;
+
+            //placing rating
+            var ratingSpot = $("<p>").text("Rating: " + rating);
+
+            //creating spot to place gif
+            var animalImage = $("<img>");
+
+            //assigning url to image tag
+            animalImage.attr("src", results[i].images.fixed_height_small.url);
             
 
+            //appending rating and image to our div
+            gifDiv.append(ratingSpot);
+            gifDiv.append(animalImage);
+
+            //placing new gifs first
+            $("#animalView").prepend(gifDiv);
+            }
         }
-        
-        
     }
     )}
+
+//change still / moving state
 
 //render buttons function
 function renderButtons() {
     $("#buttonsView").empty();
 
     for (var i = 0; i < animals.length; i++) {
-        var button = $("<button>");
-        button.addClass("animal");
+        var button = $("<button type='button' class='btn btn-dark'>");
+        button.addClass("animals");
         button.attr("data-name", animals[i]);
         button.text(animals[i]);
         $("#buttonsView").append(button);
@@ -54,7 +76,7 @@ $("#add-animal").on("click", function() {
 })
 
 //event listener for "animal" class
-$(document).on("click", ".animal", displayAnimalInfo);
+$(document).on("click", ".animals", displayAnimalInfo);
 
 //render initial buttons
 renderButtons();

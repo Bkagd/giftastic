@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
     <title>Get Yo' Gifs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <style type="text/css">
     button,
     div,
@@ -14,28 +15,48 @@
     input {
       margin: 10px;
     }
+    .animal {
+        float: left;
+    }
+    .animals {
+        border: 1px;
+        border-style: inset;
+    }
+    .container {
+        background-color: white;
+        text-align:center;
+        border: 5px black;
+    }
+    body{
+        background-image: url(assets/images/background-blue.jpg);
+        background-repeat: round;
+    }
+    p {
+        border: 1px;
+        background-color: white;
+    }
     </style>
 </head>
 <body>
     <div class="container">
-
+    <div class="card-body">
         <h1>Let's Get Giphy!</h1>
-
-        <!-- Movies will be placed here -->
-        <div id="animalView"></div>
 
         <!-- Rendered buttons here -->
         <div id="buttonsView"></div>
 
         <!-- user will enter animal here -->
         <form id="animal-form">
-            <label for="animal-input">Add animal here</label>
-            <input type="text" id="animal-input">
-            <br>
+        <label for="animal-input">Add animal here</label>
+        <input type="text" id="animal-input">
+        <br>
 
         <!-- button for adding new animal -->
         <input id="add-animal" type="submit" value="Click to add animal">
         </form>
+    </div>
+        <!-- Movies will be placed here -->
+        <div id="animalView"></div>
     </div>
     
 </body>
